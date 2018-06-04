@@ -55,16 +55,6 @@ namespace DiscordBot.Modules
                     break;
                 }
             }
-            //while(true)
-            //{
-            //    int k = 0;
-            //    if (game.result.matches[0].players[k].account_id.ToString() == id)
-            //    {
-            //        hero = Parser.Parse(game.result.matches[0].players[k].hero_id);
-            //        break;
-            //    }
-            //    k++;
-            //}
 
             url = @"https://api.steampowered.com/IDOTA2Match_570/GetMatchDetails/V001/?match_id=" + game.result.matches[0].match_id + "&key=" + api;
             GameDota Game = JsonConvert.DeserializeObject<GameDota>(Data.GetData(url));
@@ -107,50 +97,16 @@ namespace DiscordBot.Modules
         [Command("winrate")]
         public async Task WinrateCommand(string id)
         {
-            string count = "100";
-            string api = "E26ECE5ABC97A7AD4B9458909AFE700B";
-            string url = $"https://api.steampowered.com/IDOTA2Match_570/GetMatchHistory/V001/?matches_requested=" + count + "&key=" + api + "&account_id=" + id;
+            int count = 25;
 
-            GameDota game = JsonConvert.DeserializeObject<GameDota>(Data.GetData(url));
-            int win = 0;
-            int lose = 0;
-            for(int i = 0; i <= game.result.matches.Length - 1; i++)
-            {
-                string matchURL = @"https://api.steampowered.com/IDOTA2Match_570/GetMatchDetails/V001/?match_id=" + game.result.matches[i].match_id + "&key=" + api;
-                GameDota Match = JsonConvert.DeserializeObject<GameDota>(Data.GetData(matchURL));
-                for (int k = 0; k <= Match.result.players.Length; k++)
-                {
-                    if(Match.result.players[k].account_id.ToString() == id)
-                    {
-                        if (Match.result.radiant_win && Match.result.players[k].player_slot < 5)
-                        {
-                            win++;
-                            Console.WriteLine($"1. {win}");
-                            break;
-                        }
-                        else if (Match.result.radiant_win && Match.result.players[k].player_slot > 5)
-                        {
-                            lose++;
-                            Console.WriteLine($"2. {lose}");
-                            break;
-                        }
-                        else if (!Match.result.radiant_win && Match.result.players[k].player_slot > 5)
-                        {
-                            win++;
-                            Console.WriteLine($"3. {win}");
-                            break;
-                        }
-                        else if (!Match.result.radiant_win && Match.result.players[k].player_slot < 5)
-                        {
-                            lose++;
-                            Console.WriteLine($"4. {lose}");
-                            break;
-                        }
-                    }
-                }
-            }
-            double winrate = Math.Round((double) win / (win + lose) * 100, 4);
-            await ReplyAsync($"Winrate = {winrate}%;\nFrom {win + lose} games;");
+            //EmbedBuilder builder = new EmbedBuilder();
+            //builder.WithTitle("Attention!")
+            //    .WithDescription("Lexa!")
+            //    .WithColor(Color.Red);
+            //await ReplyAsync("", false, builder.Build());
+            await ReplyAsync("Wait a second...");
+
+            await ReplyAsync($"Winrate = {Commands.Winrate(id, count)}%;\nFrom {count} games;");
         }
 
         [Command("join")]
