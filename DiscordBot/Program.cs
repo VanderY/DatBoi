@@ -26,7 +26,7 @@ namespace DiscordBot
                 .AddSingleton(_commands)
                 .BuildServiceProvider();
 
-            string botToken = "NDQ2MDAyMzcyOTkzNDgyNzUz.DdyxaQ.2TWxbbU71CMRFkgPHCzr4D9OOYw";
+            string botToken = ""; //token here
 
             //event subscripitions
             _client.Log += Log;
@@ -71,7 +71,7 @@ namespace DiscordBot
 
             int argPos = 0;
 
-            if(message.HasStringPrefix("bot ", ref argPos) || message.HasMentionPrefix(_client.CurrentUser, ref argPos))
+            if(message.HasStringPrefix("бот ", ref argPos) || message.HasMentionPrefix(_client.CurrentUser, ref argPos))
             {
                 var context = new SocketCommandContext(_client, message);
 

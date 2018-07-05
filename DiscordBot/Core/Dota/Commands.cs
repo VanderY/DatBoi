@@ -52,6 +52,41 @@ namespace DiscordBot.Core.Dota
                         }
                     }
                 }
+                //int k = 0;
+                //while (true)
+                //{
+                //    if (Match.result.players[k].account_id.ToString() == id)
+                //    {
+                //        if (Match.result.radiant_win)
+                //        {
+                //            win++;
+                //            Console.WriteLine($"1. {win}");
+                //            break;
+                //        }
+                //        else
+                //        {
+                //            lose++;
+                //            Console.WriteLine($"4. {lose}");
+                //            break;
+                //        }
+                //    }
+                //    else if (k == (Match.result.players.Length / 2) - 1)
+                //    {
+                //        if (Match.result.radiant_win)
+                //        {
+                //            lose++;
+                //            Console.WriteLine($"2. {lose}");
+                //            break;
+                //        }
+                //        else
+                //        {
+                //            win++;
+                //            Console.WriteLine($"3. {win}");
+                //            break;
+                //        }
+                //    }
+                //    k++;
+                //}
             }
 
             double winrate = Math.Round((double)win / (win + lose) * 100, 4);

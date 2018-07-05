@@ -13,7 +13,7 @@ namespace DiscordBot.Modules
 {
     public class Ping : ModuleBase<SocketCommandContext>
     {
-        [Command("agressive")]
+        [Command("соси")]
         public async Task PingAsync()
         {
             //EmbedBuilder builder = new EmbedBuilder();
@@ -29,13 +29,13 @@ namespace DiscordBot.Modules
 
 
             //await ReplyAsync($"{Context.User.Mention} ");
-            await ReplyAsync($"{Context.User.Mention} go out!!");
+            await ReplyAsync($"{Context.User.Mention} иди нахуй!!!");
         }
 
-        [Command("fas")]
+        [Command("фас")]
         public async Task FasCommand(string name)
         {
-            await ReplyAsync($"{name} is bastard");
+            await ReplyAsync($"{name} пидор");
         }
 
         [Command("last")]
